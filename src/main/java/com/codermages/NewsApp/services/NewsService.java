@@ -9,9 +9,7 @@ import com.codermages.NewsApp.models.Article;
 @Service
 public class NewsService {
     @Autowired
-    NewsGateway newsGateway;// = new NewsGateway();
-
-    // public ResponseEntity<OrchestratorResponse> process(OrchestratorRequest orchestratorGameRequest, String operator) {
+    NewsGateway newsGateway;
 
     public Article fetchNewsArticle() {
         // Logic to fetch news from an external API
