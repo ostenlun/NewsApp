@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<title>NewsApp</title>
+<head>
+    <meta charset="UTF-8">
+    <title>Greeting Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+    <h1 class="greeting" th:text="${title}"></h1>
+    <p th:text="${description}"></p>
+    <!-- <button class="button" onclick="sayHello()">Say Hello</button> -->
+</div>
+<script>
+    function sayHello() { alert('Hello, there!'); }
+</script>
+</body>
+</html>
