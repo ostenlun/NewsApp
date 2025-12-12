@@ -31,7 +31,7 @@ public class NewsGatewayTest {
             ).thenReturn(responseEntity); 
 
         newsGateway.setRestTemplate(restTemplateMock);
-        Article article = newsGateway.fetchNewsArticle("apiUrl", "category", "language", "accessToken");
+        Article article = newsGateway.fetchNewsArticle("category", "language", "accessToken");
 
         Assertions.assertEquals("Sample Title", article.getTitle());
         Assertions.assertEquals("Sample Description", article.getDescription());

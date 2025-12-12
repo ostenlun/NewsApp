@@ -17,13 +17,14 @@ import tools.jackson.databind.ObjectMapper;
 public class NewsGateway {
     RestTemplate restTemplate = new RestTemplate();
     ObjectMapper mapper = new ObjectMapper();
-
+    final String NEWS_API_URL = "https://newsdata.io/api/1/latest";
+       
     public void setRestTemplate(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
 
-    public Article fetchNewsArticle(String apiUrl, String category, String language, String accessToken) {
-        String url = apiUrl + "?category=" + category + "&language=" + language;
+    public Article fetchNewsArticle(String category, String language, String accessToken) {
+        String url = NEWS_API_URL + "?category=" + category + "&language=" + language;
         
         // Call end point with token
         HttpHeaders headers = new HttpHeaders();

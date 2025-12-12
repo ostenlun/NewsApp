@@ -265,6 +265,21 @@
 
 	<build>
 		<plugins>
+	        <!-- <plugin>
+				<groupId>io.fabric8</groupId>
+				<artifactId>fabric8-maven-plugin</artifactId>
+				<configuration>
+					<verbose>true</verbose>
+					<images>
+						<image>
+							<name>NewsApp:${project.version}</name>
+							<build>
+								<dockerFileDir>src/main/docker/Dockerfile</dockerFileDir>
+							</build>
+						</image>
+					</images>
+				</configuration>
+			</plugin> -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -281,7 +296,7 @@
 					</annotationProcessorPaths>
 				</configuration>
 			</plugin>
-			<plugin>
+			<!-- <plugin>
 				<groupId>org.asciidoctor</groupId>
 				<artifactId>asciidoctor-maven-plugin</artifactId>
 				<version>2.2.1</version>
@@ -305,7 +320,7 @@
 						<version>${spring-restdocs.version}</version>
 					</dependency>
 				</dependencies>
-			</plugin>
+			</plugin> -->
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
@@ -320,6 +335,64 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<profiles>
+		<profile>
+			<id>docker</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>io.fabric8</groupId>
+						<artifactId>docker-maven-plugin</artifactId>
+						<version>0.45.1</version>
+						<configuration>
+							<verbose>true</verbose>
+							<images>
+								<image>
+								 	<!-- <name>some.docker.repository.com/user/path1/path2/path3/my-test-image</name> -->
+                           			<name>newsapp</name>
+									<build>
+										<!-- <contextDir>${project.basedir}</contextDir> -->
+										<!-- <dockerFile>src/main/docker/Dockerfile</dockerFile> -->
+										<args>
+											<VERSION>${project.version}</VERSION>
+											<!-- <JAR_LOCATION>maven</JAR_LOCATION> -->
+										</args>
+										<assembly>
+											<descriptorRef>artifact</descriptorRef>
+										</assembly>
+										<tags>
+											<tag>latest</tag>
+											<tag>${project.version}</tag>
+										</tags>
+									</build>
+
+								</image>
+							</images>
+							<saveFile>target/${project.artifactId}-${project.version}.tar.gz</saveFile>
+						</configuration>
+						<executions>
+							<execution>
+								<id>docker:build:save</id>
+								<phase>package</phase>
+								<goals>
+									<goal>build</goal>
+									<goal>save</goal>
+								</goals>
+							</execution>
+							<execution>
+								<id>docker:push</id>
+								<phase>deploy</phase>
+								<goals>
+									<goal>push</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 	<repositories>
 		<repository>
 			<id>spring-snapshots</id>

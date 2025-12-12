@@ -24,7 +24,7 @@ public class NewsServiceTest {
 
 
         // Test logic to verify fetching news article
-        when(newsGateway.fetchNewsArticle(anyString(), anyString(), anyString(), anyString()))
+        when(newsGateway.fetchNewsArticle(anyString(), anyString(), anyString()))
             .thenReturn(new Article("Sample Title", "Sample Description"));
 
         Article article = newsService.fetchNewsArticle();

@@ -13,12 +13,11 @@ public class NewsService {
 
     public Article fetchNewsArticle() {
         // Logic to fetch news from an external API
-        String apiUrl = "https://newsdata.io/api/1/latest";
-        String category = "Science, Technology";
+         String category = "Science, Technology";
         String language = "en";
         String accessToken = "pub_0078cb1ffa0f4b00b7f7bfe990fc3dd8";
         
-        Article article = newsGateway.fetchNewsArticle(apiUrl, category, language, accessToken);
+        Article article = newsGateway.fetchNewsArticle(category, language, accessToken);
         return article;
     }
 }
