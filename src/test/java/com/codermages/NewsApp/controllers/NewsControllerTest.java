@@ -13,11 +13,15 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.codermages.NewsApp.domain.Article;
 import com.codermages.NewsApp.services.NewsService;
+import com.codermages.NewsApp.services.StorageService;
 
 @WebMvcTest(NewsController.class)
 public class NewsControllerTest {
     @MockitoBean
     private NewsService newsService;
+
+    @MockitoBean
+    private StorageService storageService;
 
     @Autowired
     private MockMvc mockMvc;
