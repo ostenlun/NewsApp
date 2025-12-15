@@ -27,6 +27,8 @@ import com.codermages.NewsApp.gateways.NewsGateway;
 public class NewsIntegrationTest {
     RestTemplate restTemplateMock = Mockito.mock(RestTemplate.class);
 
+    // Test with InjectMocks?
+
     @Autowired
     private NewsGateway newsGateway;
 

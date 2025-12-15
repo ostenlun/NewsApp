@@ -6,21 +6,16 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.eq;
 import org.mockito.Mockito;
 import static org.mockito.Mockito.when;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
-import com.codermages.NewsApp.models.Article;
+import com.codermages.NewsApp.domain.Article;
 
-@SpringBootTest
 public class NewsGatewayTest {
-    @Autowired
-    NewsGateway newsGateway;
-
     RestTemplate restTemplateMock = Mockito.mock(RestTemplate.class);
+    private final NewsGateway newsGateway = new NewsGateway();
 
     @Test
     public void testFetchNewsArticle() {

@@ -369,7 +369,7 @@
 
 								</image>
 							</images>
-							<saveFile>target/${project.artifactId}-${project.version}.tar.gz</saveFile>
+							<saveFile>target/${project.artifactId}-latest.tar.gz</saveFile>
 						</configuration>
 						<executions>
 							<execution>

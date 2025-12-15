@@ -11,7 +11,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
-import com.codermages.NewsApp.models.Article;
+import com.codermages.NewsApp.domain.Article;
 import com.codermages.NewsApp.services.NewsService;
 
 @WebMvcTest(NewsController.class)

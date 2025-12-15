@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-import com.codermages.NewsApp.models.Article;
+import com.codermages.NewsApp.domain.Article;
 
 import tools.jackson.databind.JsonNode;
 import tools.jackson.databind.ObjectMapper;
@@ -18,7 +18,9 @@ public class NewsGateway {
     RestTemplate restTemplate = new RestTemplate();
     ObjectMapper mapper = new ObjectMapper();
     final String NEWS_API_URL = "https://newsdata.io/api/1/latest";
-       
+    
+    public NewsGateway() {}
+    
     public void setRestTemplate(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }

@@ -1,15 +1,17 @@
 package com.codermages.NewsApp.services;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.codermages.NewsApp.domain.Article;
 import com.codermages.NewsApp.gateways.NewsGateway;
-import com.codermages.NewsApp.models.Article;
 
 @Service
 public class NewsService {
-    @Autowired
-    NewsGateway newsGateway;
+    private final NewsGateway newsGateway;
+
+    public NewsService(NewsGateway newsGateway) {
+        this.newsGateway = newsGateway;
+    }
 
     public Article fetchNewsArticle() {
         // Logic to fetch news from an external API

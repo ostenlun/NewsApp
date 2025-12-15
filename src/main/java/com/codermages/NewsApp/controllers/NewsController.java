@@ -5,14 +5,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.codermages.NewsApp.models.Article;
+import com.codermages.NewsApp.domain.Article;
 import com.codermages.NewsApp.services.NewsService;
+
 
 
 @Controller
 public class NewsController {
     @Autowired
     private NewsService newsService;
+
+    // @Autowired
+    // private StorageService storageService;
 
     @GetMapping("/")
     public String root() {
@@ -27,4 +31,24 @@ public class NewsController {
         model.addAttribute("description", "Description: " + article.getDescription());
         return "index";
     }
+
+    // Store news info
+    // @PostMapping("/store")
+    // public String storeNewsInfo(@Nonnull @RequestBody MockStorageRequest request, Model model) {
+    //     System.out.println("Calling store news info");
+    //     ResponseEntity<?> response = storageService.storeData(request.getData());
+    //     model.addAttribute("status", response.getStatusCode());
+    //     return "index";
+    // }
+
+    // // Get news info
+    // @GetMapping("/get")
+    // public String getNewsInfo(@Nonnull @PathVariable String userId, Model model) {
+    //     System.out.println("Calling store news info");
+    //     ResponseEntity<?> response = storageService.getData(userId);
+    //     model.addAttribute("status", response.getStatusCode());
+    //     model.addAttribute("data", response.getBody());
+    //     return "index";
+    // }
+
 }
