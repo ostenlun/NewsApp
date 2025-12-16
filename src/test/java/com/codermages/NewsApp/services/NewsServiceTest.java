@@ -22,7 +22,7 @@ public class NewsServiceTest {
     @Test
     public void testFetchNewsArticle() {
         // Test logic to verify fetching news article
-        when(newsGateway.fetchNewsArticle(anyString(), anyString(), anyString()))
+        when(newsGateway.fetchNewsArticle(anyString(), anyString()))
             .thenReturn(new Article("Sample Title", "Sample Description"));
 
         Article article = newsService.fetchNewsArticle();
