@@ -12,9 +12,9 @@ import org.springframework.web.client.RestTemplate;
 
 import com.codermages.NewsApp.domain.Article;
 
-import tools.jackson.databind.JsonNode;
-import tools.jackson.databind.ObjectMapper;
-import tools.jackson.databind.node.ObjectNode;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 
 @Component
 public class NewsGateway {
@@ -29,7 +29,7 @@ public class NewsGateway {
         this.restTemplate = restTemplate;
     }
 
-    public Article fetchNewsArticle(String category, String language) {
+    public Article fetchNewsArticle(String category, String language) throws Exception {
         String url = NEWS_API_URL + "?category=" + category + "&language=" + language;
         
         // Call end point with token
@@ -54,7 +54,7 @@ public class NewsGateway {
         return article;
     }
 
-    public List<Article> fetchNewsArticles(String category, String language, int count) {
+    public List<Article> fetchNewsArticles(String category, String language, int count) throws Exception {
         String url = NEWS_API_URL + "?category=" + category + "&language=" + language + "&size=" + count;
         
         // Call end point with token

@@ -20,7 +20,7 @@ public class NewsServiceTest {
     }
 
     @Test
-    public void testFetchNewsArticle() {
+    public void testFetchNewsArticle() throws Exception {
         // Test logic to verify fetching news article
         when(newsGateway.fetchNewsArticle(anyString(), anyString()))
             .thenReturn(new Article("Sample Title", "Sample Description"));

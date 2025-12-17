@@ -14,7 +14,7 @@ public class NewsService {
         this.newsGateway = newsGateway;
     }
 
-    public Article fetchNewsArticle() {
+    public Article fetchNewsArticle() throws Exception {
         // Logic to fetch news from an external API
         
         String category = "Science, Technology";
@@ -24,7 +24,7 @@ public class NewsService {
         return article;
     }
 
-    public List<Article> fetchNewsArticles() {
+    public List<Article> fetchNewsArticles() throws Exception {
         String category = "Science, Technology";
         String language = "en";
         int count = 5;

@@ -8,7 +8,7 @@ import org.mockito.Mockito;
 import static org.mockito.Mockito.when;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
@@ -45,7 +45,7 @@ public class NewsIntegrationTest {
         when(restTemplateMock.exchange(anyString(), eq(HttpMethod.GET), any(HttpEntity.class) , eq(String.class)))
             .thenReturn(responseEntity); 
 
-        mockMvc.perform(get("/news"))
+        mockMvc.perform(get("/api/news"))
                .andExpect(status().isOk())
                .andExpect(view().name("index"))
                .andExpect(model().attributeExists("title"))

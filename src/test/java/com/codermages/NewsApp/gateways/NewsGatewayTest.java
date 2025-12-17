@@ -18,7 +18,7 @@ public class NewsGatewayTest {
     private final NewsGateway newsGateway = new NewsGateway();
 
     @Test
-    public void testFetchNewsArticle() {
+    public void testFetchNewsArticle() throws Exception {
         String strArticlesJson = "{ \"results\": [ { \"title\": \"Sample Title\", \"description\": \"Sample Description\" } ] }";
         ResponseEntity<String> responseEntity = new ResponseEntity<>(strArticlesJson, HttpStatus.OK);
 

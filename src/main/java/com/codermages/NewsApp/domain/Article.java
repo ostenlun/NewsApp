@@ -2,6 +2,7 @@ package com.codermages.NewsApp.domain;
 
 import java.util.ArrayList;
 
+@lombok.NoArgsConstructor
 @lombok.Data
 public class Article {
     public String article_id;

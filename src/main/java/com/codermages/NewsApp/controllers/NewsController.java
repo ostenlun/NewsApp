@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.codermages.NewsApp.domain.Article;
 import com.codermages.NewsApp.domain.MockStorageRequest;
@@ -19,6 +20,7 @@ import jakarta.annotation.Nonnull;
 
 
 @Controller
+@RequestMapping("/api")
 public class NewsController {
     @Autowired
     private NewsService newsService;
@@ -34,9 +36,17 @@ public class NewsController {
     @GetMapping("/news")
     public String getNews(Model model) {
         System.out.println("Calling fetch news");
-        Article article = newsService.fetchNewsArticle();
-        model.addAttribute("title", "First article title: " + article.getTitle());
-        model.addAttribute("description", "Description: " + article.getDescription());
+        Article article = null;
+        
+        try{
+            article = newsService.fetchNewsArticle();
+            model.addAttribute("title", "First article title: " + article.getTitle());
+            model.addAttribute("description", "Description: " + article.getDescription());
+        } catch (Exception e) {
+            model.addAttribute("title", "Error fetching news article");
+            model.addAttribute("description", e.getMessage());
+        }
+
         return "index";
     }
 
