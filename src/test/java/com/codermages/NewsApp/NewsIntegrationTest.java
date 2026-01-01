@@ -46,11 +46,11 @@ public class NewsIntegrationTest {
             .thenReturn(responseEntity); 
 
         mockMvc.perform(get("/news"))
-               .andExpect(status().isOk())
-               .andExpect(view().name("index"))
-               .andExpect(model().attributeExists("title"))
-               .andExpect(model().attributeExists("description"))
-               .andExpect(model().attribute("title", "First article title: " + "Sample Title"))
-               .andExpect(model().attribute("description", "Description: " + "Sample Description"));
+            .andExpect(status().isOk())
+            .andExpect(view().name("index"))
+            .andExpect(model().attributeExists("title"))
+            .andExpect(model().attributeExists("description"))
+            .andExpect(model().attribute("title", "First article title: " + "Sample Title"))
+            .andExpect(model().attribute("description", "Description: " + "Sample Description"));
     }
 }

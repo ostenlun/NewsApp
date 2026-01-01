@@ -6,7 +6,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.codermages.NewsApp.domain.Article;
+import com.codermages.NewsApp.domain.NewsStorageRequest;
 import com.codermages.NewsApp.gateways.StorageGateway;
+
 
 @Service
 public class StorageService {
@@ -21,8 +23,9 @@ public class StorageService {
         return storageGateway.storeData(article.getTitle());
     }
 
-    public ResponseEntity<?> storeData(String data) {
-        return storageGateway.storeData(data);
+    public ResponseEntity<?> storeData(NewsStorageRequest request) {
+
+        return storageGateway.storeData(request.getData());
     }
 
     public ResponseEntity<?> getData(String userId) {
